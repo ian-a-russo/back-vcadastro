@@ -97,5 +97,5 @@ app.put("/users/:id", async (req: Request, res: Response) => {
 });
 
 app.listen(() => {
-  console.log(`Servidor rodando em https://vcadastro.vercel.app/`);
+  console.log(`Servidor rodando em https://back-vcadastro.vercel.app/`);
 });
