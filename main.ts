@@ -1,14 +1,18 @@
+import { NextFunction, Request, Response } from "express";
 import { pool } from "./src/database/bancoDeDados";
 import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 8082;
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://vcadastro.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader(
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+  );
+  res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
@@ -17,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.get("/users", async (req, res) => {
+app.get("/users", async (req: Request, res: Response) => {
   try {
     const client = await pool.connect();
     const result = await client.query("SELECT * FROM usuarios");
@@ -29,7 +33,7 @@ app.get("/users", async (req, res) => {
   }
 });
 
-app.get("/users/:id", async (req, res) => {
+app.get("/users/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const client = await pool.connect();
@@ -44,7 +48,7 @@ app.get("/users/:id", async (req, res) => {
   }
 });
 
-app.post("/users", async (req, res) => {
+app.post("/users", async (req: Request, res: Response) => {
   const { nome, email, telefone } = req.body;
   try {
     const result = await pool.query(
@@ -58,7 +62,7 @@ app.post("/users", async (req, res) => {
   }
 });
 
-app.delete("/users/:id", async (req, res) => {
+app.delete("/users/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
@@ -75,7 +79,7 @@ app.delete("/users/:id", async (req, res) => {
   }
 });
 
-app.put("/users/:id", async (req, res) => {
+app.put("/users/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const { nome, email, telefone } = req.body;
   try {
@@ -94,5 +98,5 @@ app.put("/users/:id", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em https://back-vcadastro.vercel.app:${PORT}`);
+  console.log(`Servidor rodando em http://127.0.0.1:${PORT}`);
 });
