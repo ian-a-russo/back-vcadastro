@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "cadastro-back-end",
+			"path": "."
+		},
+		{
+			"name": "node_modules",
+			"path": "../../VS Code/node_modules"
+		},
+		{
+			"name": "express",
+			"path": "../../VS Code/node_modules/express"
+		}
+	],
+	"settings": {}
+}

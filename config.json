@@ -1,0 +1,13 @@
+{
+    "routes": [
+      {
+        "path": "/",
+        "file": "./cadastro-front-end/cadastro.html"
+      },
+      {
+        "path": "/styles.css",
+        "file": "./cadastro-front-end/style.css"
+      }
+    ]
+  }
+  
