@@ -4,7 +4,6 @@ import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const PORT = 8082;
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -97,6 +96,6 @@ app.put("/users/:id", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://127.0.0.1:${PORT}`);
+app.listen(() => {
+  console.log(`Servidor rodando em https://vcadastro.vercel.app/`);
 });

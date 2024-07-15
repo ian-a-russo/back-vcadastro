@@ -16,7 +16,6 @@ const bancoDeDados_1 = require("./src/database/bancoDeDados");
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const app = (0, express_1.default)();
-const PORT = 8082;
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
@@ -91,6 +90,6 @@ app.put("/users/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(500).json({ error: "Erro ao atualizar usuário" });
     }
 }));
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://127.0.0.1:${PORT}`);
+app.listen(() => {
+    console.log(`Servidor rodando em https://vcadastro.vercel.app/`);
 });
